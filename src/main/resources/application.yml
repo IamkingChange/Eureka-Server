@@ -1,0 +1,27 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: change-eureka
+  security:
+    user:
+      name: root
+      password: abc
+      roles: SUPERUSER
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: https://github.com/ryanjbaxter/beginners-guide-to-spring-cloud
+#          searchPaths: beginners-guide-to-spring-cloud-config
+#        prefix: /config
+#      label: master
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8761/eureka
